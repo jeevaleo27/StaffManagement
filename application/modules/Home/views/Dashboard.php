@@ -7,6 +7,7 @@
 		<div id="form" class="main col-12 h-100 py-2">
 			<!--content in page-->
 			<h1>welcome</h1>
+			hello world
 		</div>
 	</div>
 	<!--Page ends-->

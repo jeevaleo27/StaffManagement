@@ -8,14 +8,17 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.3.2/css/fixedColumns.dataTables.min.css">
 
 <body>
+  <div class="card">
   <div class="row grow w-99.8">	
     <div id="form" class="main col-12 h-100 py-2">			
       <!-- <table id="example" class="table table-bordered table-sm display nowrap" > -->
-     <table id="table" class="display" cellspacing="0" width="100%">
+     <table id="table" class="display nowarp" cellspacing="0" width="100%">
         <thead>
-          <tr>  
-            <button type='button' class='btn btn-primary  btn-sm edit'><a href="<?php echo base_url('Staff/InsertStaffDetails')?>" style='color:white;'>Create_Staff_Details</a>
+          <tr> 
+          <div>
+            <button type='button' class='btn btn-primary btn-sm edit m-2'><a href="<?php echo base_url('Staff/InsertStaffDetails')?>" style='color:white;'>Create_Staff_Details</a>
             </button>
+          </div> 
             <th>StaffUID</th>
             <th>StaffName </th>
             <th>StaffDOB </th>
@@ -68,6 +71,7 @@
       </table>		
     </div>
   </div>
+</div>
 
   <!-- The Modal -->
   <div class="modal fade" id="ShowStaffDetails">
@@ -211,8 +215,16 @@ $(document).ready(function() {
     table = $('#table').DataTable({ 
  
         "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
+        "serverSide": true,
+        scrollX: true,
+        scrollCollapse: true, //Feature control DataTables' server-side processing mode.
+        "order": [],
+        "pageLength": 10,
+        "lengthMenu":[[10, 15, 20, 25, 50, 100], [10, 15, 20, 25, 50, 100]],
+        fixedColumns:   {
+            leftColumns: 1,
+            rightColumns: 3
+          }, //Initial no order.
  
         // Load data for the table's content from an Ajax source
         "ajax": {
@@ -276,28 +288,7 @@ $(document).ready(function() {
   //   /*Script to delete the field using "data-id" @author:Jeeva */
 
 
-  //   $(document).on("click", ".delete", function()
-  //   { 
-  //     var $ele = $(this).parent().parent();
-  //     $.ajax({
-  //       url: "<?php //echo base_url("Staff/DeleteStaff");?>",
-  //       type: "POST",
-  //       cache: false,
-  //       data: {
-  //         type: 2,
-  //         StaffUID: $(this).attr("data-id")
-  //       },
-  //       success: function(dataResult){
-
-  //         var dataResult = JSON.parse(dataResult);
-  //         if(dataResult.statusCode==200){
-  //           $ele.fadeOut().remove();
-  //           window.location.href='<?php //echo base_url('Staff/index')?>';
-  //         }
-  //       }
-  //     });
-
-  //   });
+  //             
 
   //   /* function to perform the modal function @author:Jeeva*/
     $(function () {
